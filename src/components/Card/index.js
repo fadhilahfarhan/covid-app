@@ -1,15 +1,13 @@
-import styles from "./index.module.css";
+import StyledCard from "./Card.Styled";
 
 // menerima props dikirim dari komponen global
 const Card = (props) => {
-  // melakukan destructing pada props
-  // saya menggunakan styles[status] agar style css bisa dibedakan berdasarkan status
   const { total, status } = props;
   return (
-    <div className={styles.global__group}>
+    <StyledCard>
       <h2>{status}</h2>
-      <h1 className={styles[status]}>{total}</h1>
-    </div>
+      <h1 className={status}>{total}</h1>
+    </StyledCard>
   );
 };
 

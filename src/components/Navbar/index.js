@@ -1,6 +1,6 @@
 // import css, useEffect dan useState
-import styles from "./index.module.css";
 import { useState, useEffect } from "react";
+import StyledNavbar from "./Navbar.Styled";
 
 const Navbar = () => {
   // state menu untuk menentukan button ketika diklik
@@ -34,45 +34,41 @@ const Navbar = () => {
   };
 
   return (
-    <>
-      <nav className={styles.navbar}>
-        <div className={styles.navbar__container}>
-          <div>
-            <h2 className={styles.navbar__logo}>Covid ID</h2>
-          </div>
-          {/* untuk menampilkan button pada ukurang kecil */}
-          {smallScreen && (
-            <div>
-              <button className={styles.navbar__button} onClick={handleMenu}>
-                {menu ? "Close" : "Menu"}
-              </button>
-            </div>
-          )}
-          {/* menambahkan listItems pada ukuran large */}
-          {largeScreen && (
-            <div>
-              <ul className={styles.navbar__listItems}>
-                <li className={styles.navbar__item}>Global</li>
-                <li className={styles.navbar__item}>Indonesia</li>
-                <li className={styles.navbar__item}>Provinsi</li>
-                <li className={styles.navbar__item}>About</li>
-              </ul>
-            </div>
-          )}
+    <StyledNavbar>
+      <div className="navbar__container">
+        <div>
+          <h2>Covid ID</h2>
         </div>
-        {/* menu ini akan muncul jika button menjadi true */}
-        {menu && (
-          <div className={styles.navbar__visibility}>
-            <ul className={styles.navbar__listItems}>
-              <li className={styles.navbar__item}>Global</li>
-              <li className={styles.navbar__item}>Indonesia</li>
-              <li className={styles.navbar__item}>Provinsi</li>
-              <li className={styles.navbar__item}>About</li>
+        {/* untuk menampilkan button pada ukurang kecil */}
+        {smallScreen && (
+          <div>
+            <button onClick={handleMenu}>{menu ? "Close" : "Menu"}</button>
+          </div>
+        )}
+        {/* menambahkan listItems pada ukuran large */}
+        {largeScreen && (
+          <div>
+            <ul>
+              <li>Global</li>
+              <li>Indonesia</li>
+              <li>Provinsi</li>
+              <li>About</li>
             </ul>
           </div>
         )}
-      </nav>
-    </>
+      </div>
+      {/* menu ini akan muncul jika button menjadi true */}
+      {menu && (
+        <div className="navbar__visibility">
+          <ul>
+            <li>Global</li>
+            <li>Indonesia</li>
+            <li>Provinsi</li>
+            <li>About</li>
+          </ul>
+        </div>
+      )}
+    </StyledNavbar>
   );
 };
 

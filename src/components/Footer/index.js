@@ -1,23 +1,21 @@
-import styles from "./index.module.css"
+import StyledFooter from "./Footer.Styled";
 
 function Footer() {
   return (
-    <>
-      <footer className={styles.footer__container}>
-        <div className={styles.footer__logo}>
+      <StyledFooter>
+        <div className="footer__logo">
           <h2 >Covid ID</h2>
           <p>Developed By Fadhilah Farhan</p>
         </div>
         <div>
-          <ul className={styles.footer__listItems}>
-            <li className={styles.footer__item}>Global</li>
-            <li className={styles.footer__item}>Indonesia</li>
-            <li className={styles.footer__item}>Provinsi</li>
-            <li className={styles.footer__item}>About</li>
+          <ul >
+            <li>Global</li>
+            <li>Indonesia</li>
+            <li>Provinsi</li>
+            <li>About</li>
           </ul>
         </div>
-      </footer>
-    </>
+      </StyledFooter>
   );
 }
 

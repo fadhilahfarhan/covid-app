@@ -1,7 +1,7 @@
 // Import usestate, css, nanoid
 import { nanoid } from "nanoid";
-import styles from "./index.module.css";
 import { useState } from "react";
+import StyledCovidForm from "./CovidForm.Styled";
 
 // Membuat CovidForm dan menerima props dari Home.js karena menggunakan Lifting State
 const CovidForm = (props) => {
@@ -30,10 +30,10 @@ const CovidForm = (props) => {
 
     if (value.includes(".")) {
       setDotKey(true);
-      setAlert(false)
+      setAlert(false);
     } else {
       setDotKey(false);
-      setAlert(false)
+      setAlert(false);
     }
   };
 
@@ -72,7 +72,7 @@ const CovidForm = (props) => {
         // menset kembali menjadi false jika sebelumnya berubah true
         setDotKey(false);
         setAlert(false);
-        setSuccess(true)
+        setSuccess(true);
 
         // parseInt() untuk mengubah dari string menjadi Int
         // saya juga menggunakan ternary untuk menentukan data baru dimasukan jika ada
@@ -81,13 +81,11 @@ const CovidForm = (props) => {
           ...covid.provinces[findIndex],
           kasus:
             inputChange.status === "positif"
-              ? parseInt(inputChange.jumlah) + 
-                covid.provinces[findIndex].kasus
+              ? parseInt(inputChange.jumlah) + covid.provinces[findIndex].kasus
               : covid.provinces[findIndex].kasus,
           sembuh:
             inputChange.status === "sembuh"
-              ? parseInt(inputChange.jumlah) + 
-                covid.provinces[findIndex].sembuh
+              ? parseInt(inputChange.jumlah) + covid.provinces[findIndex].sembuh
               : covid.provinces[findIndex].sembuh,
           meninggal:
             inputChange.status === "meninggal"
@@ -114,69 +112,60 @@ const CovidForm = (props) => {
   };
 
   return (
-    <>
-      <div className={styles.covidForm__container}>
-        <section className={styles.covidForm__left}>
-          <img
-            className={styles.covidForm__image}
-            src={require("../../assets/img/Form-image.png")}
-            alt="Form"
-          />
-        </section>
-        <section className={styles.covidForm__right}>
-          <h1 className={styles.covidForm__title}>Form Covid</h1>
-          <form className={styles.covidForm__form} onSubmit={handleSubmit}>
-            <div className={styles.covidForm__inputGroup}>
-            {success && <label className={styles.covidForm__success}>Data successfully updated</label>}
-              <label className={styles.covidForm__inputTitle}>Provinsi</label>
-              <select
-                className={styles.covidForm__input}
-                name="province"
-                onChange={handleInput}
-                value={inputChange.province}
-              >
-                {provinceOption}
-              </select>
-            </div>
-            <div className={styles.covidForm__inputGroup}>
-              <label className={styles.covidForm__inputTitle}>Status</label>
-              <select
-                name="status"
-                className={styles.covidForm__input}
-                onChange={handleInput}
-                value={inputChange.status}
-              >
-                <option value="positif">Positif</option>
-                <option value="sembuh">Sembuh</option>
-                <option value="dirawat">Dirawat</option>
-                <option value="meninggal">Meninggal</option>
-              </select>
-            </div>
-            <div className={styles.covidForm__inputGroup}>
-              <label className={styles.covidForm__inputTitle}>
-                Jumlah
-                <span className={styles.covidForm__alert}>
-                  {alert && `(Wajib diisi)`}
-                </span>
-                <span className={styles.covidForm__alert}>
-                  {dotKey && `(Jumlah tidak boleh Desimal)`}
-                </span>
+    <StyledCovidForm>
+      <section className="covidForm__left">
+        <img src={require("../../assets/img/Form-image.png")} alt="Form" />
+      </section>
+      <section className="covidForm__right">
+        <h1>Form Covid</h1>
+        <form onSubmit={handleSubmit}>
+          <div>
+            {success && (
+              <label className="covidForm__success">
+                Data successfully updated
               </label>
-              <input
-                className={styles.covidForm__input}
-                type="number"
-                name="jumlah"
-                value={inputChange.jumlah}
-                onChange={handleInput}
-              />
-            </div>
-            <div className={styles.covidForm__inputGroup}>
-              <button className={styles.covidForm__button}>Submit</button>
-            </div>
-          </form>
-        </section>
-      </div>
-    </>
+            )}
+            <label>Provinsi</label>
+            <select
+              name="province"
+              onChange={handleInput}
+              value={inputChange.province}
+            >
+              {provinceOption}
+            </select>
+          </div>
+          <div>
+            <label>Status</label>
+            <select
+              name="status"
+              onChange={handleInput}
+              value={inputChange.status}
+            >
+              <option value="positif">Positif</option>
+              <option value="sembuh">Sembuh</option>
+              <option value="dirawat">Dirawat</option>
+              <option value="meninggal">Meninggal</option>
+            </select>
+          </div>
+          <div>
+            <label>
+              Jumlah
+              <span>{alert && `(Wajib diisi)`}</span>
+              <span>{dotKey && `(Jumlah tidak boleh Desimal)`}</span>
+            </label>
+            <input
+              type="number"
+              name="jumlah"
+              value={inputChange.jumlah}
+              onChange={handleInput}
+            />
+          </div>
+          <div>
+            <button>Submit</button>
+          </div>
+        </form>
+      </section>
+    </StyledCovidForm>
   );
 };
 
