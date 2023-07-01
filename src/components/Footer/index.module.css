@@ -1,0 +1,38 @@
+.footer__container{
+   padding: 1rem;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   background-color: #06D6A0;
+   color: white;
+}
+
+.footer__logo{
+   cursor: pointer;
+}
+
+.footer__listItems{
+   display: flex;
+   flex-wrap: wrap;
+   list-style: none;
+   justify-content: end;
+}
+
+.footer__item{
+   margin: 0 0.2rem 0;
+   cursor: pointer;
+}
+
+@media(min-width:768px){
+   .footer__logo{
+      margin: 0 2rem;
+   }
+   
+   .footer__listItems{
+      margin: 0 2rem;
+   } 
+
+   .footer__item{
+      margin:0 0.5rem;
+   }
+}
