@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import Footer from "../components/Footer";
 import Global from "../components/Global";
 import Hero from "../components/Hero";
-import Navbar from "../components/Navbar";
 import Provinces from "../components/Provinces";
 import provincesData from "../utils/constants/provinces";
 import CovidForm from "../components/CovidForm";
@@ -14,7 +12,7 @@ import CovidForm from "../components/CovidForm";
 function Main() {
   const [covid, setCovid] = useState(provincesData);
   return (
-    <main>
+    <>
       <Hero />
       <Global />
       <Provinces covid={covid} setCovid={setCovid} />
@@ -22,16 +20,14 @@ function Main() {
       {/* <h1>Final Project - Covid ID</h1>
       <h2>Good Luck, Bestie</h2>
       <Hello /> */}
-    </main>
+    </>
   );
 }
 
 function Home() {
   return (
     <>
-      <Navbar />
       <Main />
-      <Footer />
     </>
   );
 }

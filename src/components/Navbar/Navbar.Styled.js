@@ -13,6 +13,10 @@ const StyledNavbar = styled.nav`
     justify-content: space-between;
   }
 
+  a{
+    color: white;
+  }
+
   h2 {
     cursor: pointer;
   }

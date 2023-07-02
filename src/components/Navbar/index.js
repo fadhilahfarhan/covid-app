@@ -1,6 +1,7 @@
 // import css, useEffect dan useState
 import { useState, useEffect } from "react";
 import StyledNavbar from "./Navbar.Styled";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   // state menu untuk menentukan button ketika diklik
@@ -49,10 +50,18 @@ const Navbar = () => {
         {largeScreen && (
           <div>
             <ul>
-              <li>Global</li>
-              <li>Indonesia</li>
-              <li>Provinsi</li>
-              <li>About</li>
+              <li>
+                <Link to="/">Global</Link>
+              </li>
+              <li>
+                <Link to="/indonesia">Indonesia</Link>
+              </li>
+              <li>
+                <Link to="/province">Provinsi</Link>
+              </li>
+              <li>
+                <Link to="/about">About</Link>
+              </li>
             </ul>
           </div>
         )}
@@ -61,10 +70,18 @@ const Navbar = () => {
       {menu && (
         <div className="navbar__visibility">
           <ul>
-            <li>Global</li>
-            <li>Indonesia</li>
-            <li>Provinsi</li>
-            <li>About</li>
+            <li>
+              <Link to="/">Global</Link>
+            </li>
+            <li>
+              <Link to="/indonesia">Indonesia</Link>
+            </li>
+            <li>
+              <Link to="/province">Provinsi</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
           </ul>
         </div>
       )}
