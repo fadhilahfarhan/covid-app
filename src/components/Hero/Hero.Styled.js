@@ -11,7 +11,6 @@ const StyledHero = styled.div`
 
   h1 {
     color: #06d6a0;
-    font-size: 32px;
   }
 
   .hero__subTitle {

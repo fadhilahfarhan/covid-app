@@ -6,13 +6,13 @@ const StyledCard = styled.div`
   padding: 3rem;
   box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.2);
 
-  .Positif {
+  .confirmed {
     color: #06d6a0;
   }
-  .Sembuh {
+  .recovered {
     color: #118ab2;
   }
-  .Meninggal {
+  .death {
     color: red;
   }
 `;
