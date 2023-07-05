@@ -18,7 +18,7 @@ console.log(data);
             - memberikan props kepada card yaitu total, status dan key
           */}
         {data.map((data) => (
-          <Card total={data.total} status={data.status} key={nanoid()} />
+          <Card total={data.total} status={data.status} key={data.status} />
         ))}
       </div>
     </StyledGlobal>
