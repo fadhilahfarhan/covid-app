@@ -5,8 +5,8 @@ function Footer() {
   return (
       <StyledFooter>
         <div className="footer__logo">
-          <h2 >Covid ID</h2>
-          <p>Developed By Fadhilah Farhan</p>
+          <h2><Link to={"/"}>Covid ID</Link></h2>
+          <p>Developed By <Link to={"/about"}>Fadhilah Farhan</Link></p>
         </div>
         <div>
           <ul >

@@ -1,3 +1,4 @@
+import Button from "../UI/Button";
 import StyledHero from "./Hero.Styled";
 
 const Hero = () => {
@@ -13,9 +14,7 @@ const Hero = () => {
           meninggal akibat Covid-19 di berbagai wilayah di Indonesia.
         </p>
         <div>
-          <button href="##">
-            Vaccine
-          </button>
+          <Button buttonSize="150" variant="primary">Vaccine</Button>
         </div>
       </section>
       <section className="hero__right">

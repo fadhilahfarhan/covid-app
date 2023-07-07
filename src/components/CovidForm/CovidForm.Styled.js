@@ -48,17 +48,6 @@ const StyledCovidForm = styled.div`
     padding: 0 0.4rem;
   }
 
-  button {
-    margin: 1rem 0;
-    padding: 0.5rem 2rem;
-    width: 100%;
-    color: white;
-    background-color: #06d6a0;
-    border: 1px solid #06d6a0;
-    border-radius: 10px;
-    cursor: pointer;
-  }
-
   span {
     color: red;
     padding-left: 2px;

@@ -4,10 +4,13 @@ import { useState } from "react";
 import StyledCovidForm from "./CovidForm.Styled";
 import { useDispatch, useSelector } from "react-redux";
 import { addCovid } from "../../features/covidSlice";
+import { useNavigate } from "react-router-dom";
+import Button from "../UI/Button";
 
 const CovidForm = () => {
   const covid = useSelector((state) => state.covid.covid);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [inputChange, setInputChange] = useState({
     province: "Jakarta",
@@ -16,6 +19,8 @@ const CovidForm = () => {
   });
 
   const [dotKey, setDotKey] = useState(false);
+  const [alert, setAlert] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const handleInput = (e) => {
     const { name, value } = e.target;
@@ -34,13 +39,10 @@ const CovidForm = () => {
   };
 
   const provinceOption = covid.provinces.map((kota) => (
-    <option key={nanoid(5)} value={kota.kota}>
+    <option key={kota.kota} value={kota.kota}>
       {kota.kota}
     </option>
   ));
-
-  const [alert, setAlert] = useState(false);
-  const [success, setSuccess] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -71,19 +73,16 @@ const CovidForm = () => {
               : covid.provinces[findIndex].sembuh,
           meninggal:
             inputChange.status === "meninggal"
-              ? parseInt(inputChange.jumlah) +
-                covid.provinces[findIndex].meninggal
+              ? parseInt(inputChange.jumlah) + covid.provinces[findIndex].meninggal
               : covid.provinces[findIndex].meninggal,
           dirawat:
             inputChange.status === "dirawat"
-              ? parseInt(inputChange.jumlah) +
-                covid.provinces[findIndex].dirawat
+              ? parseInt(inputChange.jumlah) + covid.provinces[findIndex].dirawat
               : covid.provinces[findIndex].dirawat,
         };
 
-        dispatch(
-          addCovid(newData)
-        );
+        dispatch(addCovid(newData));
+        navigate("/");
       }
     }
   };
@@ -138,7 +137,7 @@ const CovidForm = () => {
             />
           </div>
           <div>
-            <button>Submit</button>
+            <Button buttonSize="full" variant="primary">Submit</Button>
           </div>
         </form>
       </section>

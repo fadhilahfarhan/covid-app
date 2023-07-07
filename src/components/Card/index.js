@@ -1,8 +1,7 @@
 import StyledCard from "./Card.Styled";
 
 // menerima props dikirim dari komponen global
-const Card = (props) => {
-  const { total, status } = props;
+const Card = ({ total, status }) => {
 
   return (
     <StyledCard>
