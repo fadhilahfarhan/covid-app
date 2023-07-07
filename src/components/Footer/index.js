@@ -1,23 +1,22 @@
-import styles from "./index.module.css"
+import { Link } from "react-router-dom";
+import StyledFooter from "./Footer.Styled";
 
 function Footer() {
   return (
-    <>
-      <footer className={styles.footer__container}>
-        <div className={styles.footer__logo}>
-          <h2 >Covid ID</h2>
-          <p>Developed By Fadhilah Farhan</p>
+      <StyledFooter>
+        <div className="footer__logo">
+          <h2><Link to={"/"}>Covid ID</Link></h2>
+          <p>Developed By <Link to={"/about"}>Fadhilah Farhan</Link></p>
         </div>
         <div>
-          <ul className={styles.footer__listItems}>
-            <li className={styles.footer__item}>Global</li>
-            <li className={styles.footer__item}>Indonesia</li>
-            <li className={styles.footer__item}>Provinsi</li>
-            <li className={styles.footer__item}>About</li>
+          <ul >
+            <li><Link to="/">Global</Link></li>
+            <li><Link to="/indonesia">Indonesia</Link></li>
+            <li><Link to="/province">Provinsi</Link></li>
+            <li><Link to="/about">About</Link></li>
           </ul>
         </div>
-      </footer>
-    </>
+      </StyledFooter>
   );
 }
 

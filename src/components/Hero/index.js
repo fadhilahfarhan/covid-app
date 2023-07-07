@@ -1,34 +1,29 @@
-import styles from "./index.module.css";
+import Button from "../UI/Button";
+import StyledHero from "./Hero.Styled";
 
 const Hero = () => {
   return (
-    <>
-      <div className={styles.hero__container}>
-        <section className={styles.hero__left}>
-          <h1 className={styles.hero__title}>Covid ID</h1>
-          <p className={styles.hero__subTitle}>Monitoring Perkembangan Covid</p>
-          <p className={styles.hero__description}>
-            Covid ID adalah sebuah aplikasi untuk memantau
-            perkembangan kasus Covid-19 di Indonesia. Aplikasi ini menyediakan
-            informasi terkini mengenai jumlah kasus terkonfirmasi, pasien
-            sembuh, dan pasien meninggal akibat Covid-19 di berbagai wilayah di
-            Indonesia.
-          </p>
-          <div>
-            <button className={styles.hero__button} href="##">
-              Vaccine
-            </button>
-          </div>
-        </section>
-        <section className={styles.hero__right}>
-          <img
-            className={styles.hero__image}
-            src={require("../../assets/img/Hero-image.png")}
-            alt="logo"
-          />
-        </section>
-      </div>
-    </>
+    <StyledHero>
+      <section className="hero__left">
+        <h1>Covid ID</h1>
+        <p className="hero__subTitle">Monitoring Perkembangan Covid</p>
+        <p>
+          Covid ID adalah sebuah aplikasi untuk memantau perkembangan kasus
+          Covid-19 di Indonesia. Aplikasi ini menyediakan informasi terkini
+          mengenai jumlah kasus terkonfirmasi, pasien sembuh, dan pasien
+          meninggal akibat Covid-19 di berbagai wilayah di Indonesia.
+        </p>
+        <div>
+          <Button buttonSize="150" variant="primary">Vaccine</Button>
+        </div>
+      </section>
+      <section className="hero__right">
+        <img
+          src={require("../../assets/img/Hero-image.png")}
+          alt="logo"
+        />
+      </section>
+    </StyledHero>
   );
 };
 

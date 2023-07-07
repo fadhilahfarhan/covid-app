@@ -1,37 +1,40 @@
-import React, { useState } from "react";
-import Footer from "../components/Footer";
+import React, { useEffect, useState } from "react";
 import Global from "../components/Global";
 import Hero from "../components/Hero";
-import Navbar from "../components/Navbar";
-import Provinces from "../components/Provinces";
-import provincesData from "../utils/constants/provinces";
-import CovidForm from "../components/CovidForm";
+import axios from "axios";
+import Regions from "../components/Regions";
 
-// lifting state
-// state yang dibuat datanya berasal dari provinces.js
-// menjadikan state menjadi props ke provinces dan CovidForm
-// props yang dikirimkan berupa data covid dan setCovid untuk merubah datanya
 function Main() {
-  const [covid, setCovid] = useState(provincesData);
+  const [globalCovid, setGlobalCovid] = useState([]);
+  const [regionsCovid, setRegionsCovid] = useState([]);
+
+  const getGlobalCovidData = async () => {
+    const GlobalCovidApiUrl = "https://covid-fe-2023.vercel.app/api/global.json";
+    const response = await axios(GlobalCovidApiUrl);
+    setGlobalCovid(response.data.global)
+    setRegionsCovid(response.data.regions);
+  }
+
+  useEffect(() => {
+    getGlobalCovidData()
+  }, [])
+
   return (
-    <main>
+    <>
       <Hero />
-      <Global />
-      <Provinces covid={covid} setCovid={setCovid} />
-      <CovidForm covid={covid} setCovid={setCovid} />
+      <Global globalCovid={globalCovid} title="Global"/>
+      <Regions regionsCovid={regionsCovid}/>
       {/* <h1>Final Project - Covid ID</h1>
       <h2>Good Luck, Bestie</h2>
       <Hello /> */}
-    </main>
+    </>
   );
 }
 
 function Home() {
   return (
     <>
-      <Navbar />
       <Main />
-      <Footer />
     </>
   );
 }
