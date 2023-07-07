@@ -8,11 +8,26 @@ const StyledRegionsCard = styled.div`
 
   .content__header {
     text-align: center;
+    color: #073B4C;
     margin: 2rem auto;
     height: 90px;
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  p{
+    color: #64748B;
+  }
+
+  .status__confirmed{
+    color: #06D6A0;
+  }
+  .status__recovered{
+    color: #118AB2;
+  }
+  .status__death{
+    color: #EF476F;
   }
 
   .content__status {

@@ -43,7 +43,7 @@ const StyledNavbar = styled.nav`
   /* Tampilan Tablet atau Medium*/
   @media (min-width: 768px) {
     .navbar__container {
-      padding: 0 1rem;
+      padding: 0 1rem 0 0;
       display: flex;
       justify-content: space-between;
       align-items: center;

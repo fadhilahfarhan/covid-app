@@ -2,25 +2,21 @@
 import { nanoid } from "nanoid";
 import { useState } from "react";
 import StyledCovidForm from "./CovidForm.Styled";
+import { useDispatch, useSelector } from "react-redux";
+import { addCovid } from "../../features/covidSlice";
 
-// Membuat CovidForm dan menerima props dari Home.js karena menggunakan Lifting State
-const CovidForm = (props) => {
-  const { covid, setCovid } = props;
+const CovidForm = () => {
+  const covid = useSelector((state) => state.covid.covid);
+  const dispatch = useDispatch();
 
-  // state ini untuk menangkap dan mengubah hasil inputan pada form
   const [inputChange, setInputChange] = useState({
     province: "Jakarta",
     status: "positif",
     jumlah: "",
   });
 
-  // state untuk memunculkan alert jika ada tanda "." pada inputan
   const [dotKey, setDotKey] = useState(false);
 
-  // membuat handleInput untuk menangkap setiap perubahan
-  // mengambil name dan value
-  // name untuk menentukan province, status atau jumlah
-  // oldInput input sebelumnya
   const handleInput = (e) => {
     const { name, value } = e.target;
     setInputChange((oldInput) => ({
@@ -37,46 +33,32 @@ const CovidForm = (props) => {
     }
   };
 
-  // menggunakan map untuk looping option pada select province
   const provinceOption = covid.provinces.map((kota) => (
     <option key={nanoid(5)} value={kota.kota}>
       {kota.kota}
     </option>
   ));
 
-  // state alert untuk memunculkan tulisan alert
   const [alert, setAlert] = useState(false);
-
-  // state success untuk memunculkan tulisan success
   const [success, setSuccess] = useState(false);
 
-  // membuat handleSubmit untuk menghandle jika form disubmit
   const handleSubmit = (e) => {
-    // preventDefault mencegah halaman direfresh ketika submit
     e.preventDefault();
 
-    // mencari index yang akan diupdate menggunakan findIndex
     const findIndex = covid.provinces.findIndex(
       (index) => inputChange.province === index.kota
     );
 
-    // untuk mengecek kondisi jika ditemukan index pada findIndex
-    // menggunakan kondisi if lagi untuk memunculkan alert pada form jumlah
-    // jika form tidak diisi sama sekali akan menyebabkan data menjadi Nan dan error
     if (findIndex !== -1) {
       if (inputChange.jumlah === "") {
         setAlert(true);
       } else if (dotKey === true) {
         setAlert(false);
       } else {
-        // menset kembali menjadi false jika sebelumnya berubah true
         setDotKey(false);
         setAlert(false);
         setSuccess(true);
 
-        // parseInt() untuk mengubah dari string menjadi Int
-        // saya juga menggunakan ternary untuk menentukan data baru dimasukan jika ada
-        // dan data lama yang akan dimasukan jika tidak ada data baru
         const newData = {
           ...covid.provinces[findIndex],
           kasus:
@@ -99,14 +81,9 @@ const CovidForm = (props) => {
               : covid.provinces[findIndex].dirawat,
         };
 
-        // membuat variable update data dengan data dari newData
-        const dataProvinces = [...covid.provinces];
-        dataProvinces[findIndex] = newData;
-        // setelah menjalankan state setCovid untuk memperbarui data
-        setCovid({
-          ...covid,
-          provinces: dataProvinces,
-        });
+        dispatch(
+          addCovid(newData)
+        );
       }
     }
   };

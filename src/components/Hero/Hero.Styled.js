@@ -20,6 +20,7 @@ const StyledHero = styled.div`
 
   p {
     text-align: center;
+    color: #64748B;
   }
 
   button {

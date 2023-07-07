@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import StyledFooter from "./Footer.Styled";
 
 function Footer() {
@@ -9,10 +10,10 @@ function Footer() {
         </div>
         <div>
           <ul >
-            <li>Global</li>
-            <li>Indonesia</li>
-            <li>Provinsi</li>
-            <li>About</li>
+            <li><Link to="/">Global</Link></li>
+            <li><Link to="/indonesia">Indonesia</Link></li>
+            <li><Link to="/province">Provinsi</Link></li>
+            <li><Link to="/about">About</Link></li>
           </ul>
         </div>
       </StyledFooter>

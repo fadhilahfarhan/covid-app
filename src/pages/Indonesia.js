@@ -3,11 +3,10 @@ import Hero from "../components/Hero";
 import Provinces from "../components/Provinces";
 import axios from "axios";
 import Global from "../components/Global";
-import provincesData from "../utils/constants/provinces";
 
 function Main() {
-  const [covid, setCovid] = useState(provincesData);
   const [globalCovid, setGlobalCovid] = useState([]);
+
 
   const getIndonesiaCovidData = async () => {
     const indonesiaCovidApiUrl = "https://covid-fe-2023.vercel.app/api/indonesia.json";
@@ -15,7 +14,7 @@ function Main() {
     setGlobalCovid(response.data.indonesia)
   };
 
-  console.log(covid);
+  console.log();
 
   useEffect(() => {
     getIndonesiaCovidData();
@@ -25,7 +24,7 @@ function Main() {
     <>
       <Hero />
       <Global globalCovid={globalCovid} title="Indonesia"/>
-      <Provinces covid={covid}/>
+      <Provinces/>
       {/* <h1>Final Project - Covid ID</h1>
       <h2>Good Luck, Bestie</h2>
       <Hello /> */}

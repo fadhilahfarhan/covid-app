@@ -1,11 +1,15 @@
+import { useSelector } from "react-redux";
 import StyledProvinces from "./Provinces.Styled";
+import { nanoid } from "nanoid";
 
 // menangkap data props yang dikirim dari home
 const Provinces = (props) => {
-  const { covid } = props;
+
+  const covid = useSelector((state)=>state.covid.covid);
+  
   // menggunakan map untuk loop tableRows dan setiap rows memiliki key unik
   const tableRows = covid.provinces.map((data, index) => (
-    <tr key={data.kota}>
+    <tr key={nanoid(5)}>
       <td>{index + 1}</td>
       <td>{data.kota}</td>
       <td>{data.kasus}</td>

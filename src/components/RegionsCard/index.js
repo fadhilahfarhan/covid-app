@@ -11,21 +11,21 @@ const RegionsCard = ({region, numbers}) => {
         <div className="content__status">
           <div>
             <p>Confirmed</p>
-            <h4>{numbers.confirmed}</h4>
+            <h4 className="status__confirmed">{numbers.confirmed}</h4>
           </div>
           <img src={require("../../assets/img/icon-mask.png")} alt="mask" />
         </div>
         <div className="content__status">
           <div>
             <p>Recovered</p>
-            <h4>{numbers.recovered}</h4>
+            <h4 className="status__recovered">{numbers.recovered}</h4>
           </div>
           <img src={require("../../assets/img/icon-smile.png")} alt="mask" />
         </div>
         <div className="content__status">
           <div>
             <p>Deaths</p>
-            <h4>{numbers.death}</h4>
+            <h4 className="status__death">{numbers.death}</h4>
           </div>
           <img src={require("../../assets/img/icon-skull.png")} alt="mask" />
         </div>

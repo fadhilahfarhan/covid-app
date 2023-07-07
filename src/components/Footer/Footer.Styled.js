@@ -12,6 +12,10 @@ const StyledFooter = styled.footer`
     cursor: pointer;
   }
 
+  a{
+    color: white;
+  }
+
   ul {
     display: flex;
     flex-wrap: wrap;
