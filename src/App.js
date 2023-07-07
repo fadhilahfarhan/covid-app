@@ -4,6 +4,7 @@ import Layout from "./Layout";
 import GlobalStyle from "./components/GlobalStyle";
 import Indonesia from "./pages/Indonesia";
 import Provinsi from "./pages/Provinsi";
+import About from "./pages/About"
 import { ThemeProvider } from "styled-components";
 import theme from "./utils/constants/theme";
 
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<Home />}></Route>
           <Route path="/indonesia" element={<Indonesia />}></Route>
           <Route path="/province" element={<Provinsi />}></Route>
+          <Route path="/about" element={<About/>}></Route>
         </Routes>
       </Layout>
       </ThemeProvider>
